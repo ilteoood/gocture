@@ -1,0 +1,7 @@
+// Base element used inside structures
+
+package base
+
+type Element[T any] interface {
+	comparable
+}

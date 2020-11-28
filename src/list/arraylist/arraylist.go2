@@ -1,0 +1,37 @@
+package arraylist
+
+import "base"
+
+func (list *ArrayList[T]) Add(element T) *ArrayList[T] {
+	*list = append(*list, element)
+	return list
+}
+
+func (list *ArrayList[T]) AddAll(elements... T) *ArrayList[T] {
+	for _, element := range elements {
+		list = list.Add(element)
+	}
+	return list
+}
+
+func (list ArrayList[T]) Contains(element T) bool {
+	elementFound := false
+	for _, listElement := range list {
+		elementFound = elementFound || listElement == element
+	}
+	return elementFound
+}
+
+func (list ArrayList[T]) Size() int {
+	return len(list)
+}
+
+func (list *ArrayList[T]) IsEmpty() bool {
+	return list.Size() > 0
+}
+
+func (list *ArrayList[T]) Clear() {
+	*list = ArrayList[T]{}
+}
+
+type ArrayList[T base.Element[T]] []T

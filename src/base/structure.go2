@@ -1,0 +1,8 @@
+package base
+
+
+type Structure[T Element[T]] interface {
+	Size() int
+	IsEmpty() bool
+	Clear()
+}
